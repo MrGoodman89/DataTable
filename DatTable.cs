@@ -8,12 +8,12 @@ namespace DataTable_Intima_
 {
     class DatTable
     {
-        private string[,] list;
+        //private string[,] list;
 
-        public DatTable(string[,] list)
-        {
-            this.list = list;
-        }
+        //public DatTable(string[,] list)
+        //{
+        //    this.list = list;
+        //}
 
         public DatTable(string dateTime, string tagType, string type, string value)
         {

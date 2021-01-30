@@ -18,3 +18,9 @@ C:\Users\lifec\Desktop\DataTable(Intima)\bin\Debug\DocumentFormat.OpenXml.dll
 C:\Users\lifec\Desktop\DataTable(Intima)\bin\Debug\Microsoft.VisualStudio.OLE.Interop.dll
 C:\Users\lifec\Desktop\DataTable(Intima)\bin\Debug\DocumentFormat.OpenXml.xml
 C:\Users\lifec\Desktop\DataTable(Intima)\obj\Debug\DataTable(Intima).csproj.CopyComplete
+C:\Users\lifec\Desktop\DataTable(Intima)\bin\Debug\ClosedXML.dll
+C:\Users\lifec\Desktop\DataTable(Intima)\bin\Debug\ExcelNumberFormat.dll
+C:\Users\lifec\Desktop\DataTable(Intima)\bin\Debug\System.IO.Packaging.dll
+C:\Users\lifec\Desktop\DataTable(Intima)\bin\Debug\ClosedXML.pdb
+C:\Users\lifec\Desktop\DataTable(Intima)\bin\Debug\ClosedXML.xml
+C:\Users\lifec\Desktop\DataTable(Intima)\bin\Debug\ExcelNumberFormat.xml

@@ -35,21 +35,21 @@ namespace DataTable_Intima_
     /// </summary>
     public partial class MainWindow : Window
     {
-        
-        private static Collection<DatTable> dataCollection = new Collection<DatTable>();
-        string pathToFile = @"C:\Users\lifec\Desktop\Test.xlsx";
-        string[,] list;
-        List<List<string>> spisok;
 
-        //string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\Users\\lifec\\Desktop\\Test.xlsx;Extended Properties=Excel 8.0;HDR=Yes";
-        //string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source = C:\Users\lifec\Desktop\Test.xlsx;Extended Properties = 'Excel 8.0;HDR=Yes;IMEX=1'";
-        static string extending = "Excel 8.0;HDR=Yes;IMEX=1";
-        string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\\Users\\lifec\\Desktop\\Test.xlsx;Extended Properties=" + extending +"";
-        DataGrid dt = new DataGrid();
+        //private static Collection<DatTable> dataCollection = new Collection<DatTable>();
+        //string pathToFile = @"C:\Users\lifec\Desktop\Test.xlsx";
+        //string[,] list;
+        //List<List<string>> spisok;
+
+        ////string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\Users\\lifec\\Desktop\\Test.xlsx;Extended Properties=Excel 8.0;HDR=Yes";
+        ////string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source = C:\Users\lifec\Desktop\Test.xlsx;Extended Properties = 'Excel 8.0;HDR=Yes;IMEX=1'";
+        //static string extending = "Excel 8.0;HDR=Yes;IMEX=1";
+        //string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\\Users\\lifec\\Desktop\\Test.xlsx;Extended Properties=" + extending +"";
+        //DataGrid dt = new DataGrid();
         public MainWindow()
         {
             InitializeComponent();
-            readFromExcel();
+            //readFromExcel();
             //table.ItemsSource = dataCollection;
             //table.ItemsSource = dataCollection;
             //OpenConnection(connectionString);
@@ -58,61 +58,60 @@ namespace DataTable_Intima_
 
         }
 
-        private void readFromExcel()
-        {
-            Microsoft.Office.Interop.Excel.Application excle_app = new Microsoft.Office.Interop.Excel.Application();
-            excle_app.Visible = true;
-            Microsoft.Office.Interop.Excel.Workbook ObjWorkBook = excle_app.Workbooks.Open(pathToFile, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                                                                                           Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                                                                                           Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-            //Выбираем таблицу(лист).
-            Microsoft.Office.Interop.Excel.Worksheet ObjWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)ObjWorkBook.Sheets[1];
-
-            var lastCell = ObjWorkSheet.Cells.SpecialCells(Microsoft.Office.Interop.Excel.XlCellType.xlCellTypeLastCell);
-            list = new string[lastCell.Row, lastCell.Column];
-            spisok = new List<List<string>>();
-            //string[,] list = new string[lastCell.Column, lastCell.Row];
-            dataCollection.Clear();
-            for (int i = 0; i < (int)lastCell.Row; i++)
-            {
-                for (int j = 0; j < (int)lastCell.Column; j++)
-                {
-                    list[i,j] = ObjWorkSheet.Cells[i + 1,j + 1].Text.ToString();
+        //private void readFromExcel()
+        //{
+        //    Microsoft.Office.Interop.Excel.Application excle_app = new Microsoft.Office.Interop.Excel.Application();
+        //    excle_app.Visible = true;
+        //    Microsoft.Office.Interop.Excel.Workbook ObjWorkBook = excle_app.Workbooks.Open(pathToFile, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+        //                                                                                   Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+        //                                                                                   Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+        //    //Выбираем таблицу(лист).
+        //    Microsoft.Office.Interop.Excel.Worksheet ObjWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)ObjWorkBook.Sheets[1];
+        //    var lastCell = ObjWorkSheet.Cells.SpecialCells(Microsoft.Office.Interop.Excel.XlCellType.xlCellTypeLastCell);
+        //    list = new string[lastCell.Row, lastCell.Column];
+        //    spisok = new List<List<string>>();
+        //    //string[,] list = new string[lastCell.Column, lastCell.Row];
+        //    dataCollection.Clear();
+        //    for (int i = 0; i < (int)lastCell.Row; i++)
+        //    {
+        //        for (int j = 0; j < (int)lastCell.Column; j++)
+        //        {
+        //            list[i,j] = ObjWorkSheet.Cells[i + 1,j + 1].Text.ToString();
                     
-                    //list[i, j] = ObjWorkSheet.Cells[i + 1, j + 1].Text.ToString();//считал текст в строку
-                    //if (j == (int)lastCell.Column)
-                    //{
-                    //    //    spisok.Add(ObjWorkSheet.Cells[i + 1, j + 1].Text.ToString());
-                    //    for (int z = 0; z < list.Length; i++)
-                    //    {
-                    //        for (int x = 0; x < list.Length; x++)
-                    //        {
-                    //            dataCollection.Add(new DatTable(list[z, x].ToString(), list[z, x].ToString(), list[z, x].ToString(), list[z, x].ToString()));   
-                    //        }
-                    //    }
-                    //}
-                }
-            }
-            //sortList(ref spisok);
+        //            //list[i, j] = ObjWorkSheet.Cells[i + 1, j + 1].Text.ToString();//считал текст в строку
+        //            //if (j == (int)lastCell.Column)
+        //            //{
+        //            //    //    spisok.Add(ObjWorkSheet.Cells[i + 1, j + 1].Text.ToString());
+        //            //    for (int z = 0; z < list.Length; i++)
+        //            //    {
+        //            //        for (int x = 0; x < list.Length; x++)
+        //            //        {
+        //            //            dataCollection.Add(new DatTable(list[z, x].ToString(), list[z, x].ToString(), list[z, x].ToString(), list[z, x].ToString()));   
+        //            //        }
+        //            //    }
+        //            //}
+        //        }
+        //    }
+        //    //sortList(ref spisok);
       
-            table.ItemsSource = spisok;
-            table.Items.Refresh();
+        //    table.ItemsSource = spisok;
+        //    table.Items.Refresh();
 
 
-            ObjWorkBook.Close(false, Type.Missing, Type.Missing); //закрыть не сохраняя
-            excle_app.Quit(); // вышел из Excel
-            //GC.Collect(); // убрал за собой
+        //    ObjWorkBook.Close(false, Type.Missing, Type.Missing); //закрыть не сохраняя
+        //    excle_app.Quit(); // вышел из Excel
+        //    //GC.Collect(); // убрал за собой
 
-            //table.ItemsSource = list;
+        //    //table.ItemsSource = list;
 
-            //Microsoft.Office.Interop.Excel.Range usedColumn = ObjWorkSheet.UsedRange.Columns[numRow];
-            //System.Array myvalues = (System.Array)usedColumn.Cells.Value2;
-            //string[] strArray = myvalues.OfType<object>().Select(o => o.ToString()).ToArray();
+        //    //Microsoft.Office.Interop.Excel.Range usedColumn = ObjWorkSheet.UsedRange.Columns[numRow];
+        //    //System.Array myvalues = (System.Array)usedColumn.Cells.Value2;
+        //    //string[] strArray = myvalues.OfType<object>().Select(o => o.ToString()).ToArray();
 
-            // Выходим из программы Excel.
-            //excle_app.Quit();
+        //    // Выходим из программы Excel.
+        //    //excle_app.Quit();
 
-        }
+        //}
 
         //public void sortList(ref List<List<string>> listok)
         //{
@@ -218,5 +217,41 @@ namespace DataTable_Intima_
         {
 
         }
+
+
     }
 }
+
+
+//ПОДКЛЮЧЕНИЕ ЧЕРЕЗ ОЛЕДБ (ВИДОС НА ЮТУБЕ)
+
+//DataSet ds = new DataSet();
+//OleDbDataAdapter adapter = new OleDbDataAdapter();
+
+//private void getData_Click(object sender, RoutedEventArgs e)
+//{
+//    //string path = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+//    //path = System.IO.Path.Combine(path, "Test.xlsx");
+//    //string connectingString = @"Provider=Microsoft.ACE.OLEDB.16.0;Data Source=" + path + @";Extended Properties=""Excel 12.0 Macro;HDR=Yes;ImpoertMixedTypes=Text;TypeGuessRows=0""";
+
+//    //OleDbConnection conn = new OleDbConnection(connectingString);
+//    //string strCmd = "select * from [Sheets1$A2:D10]";
+//    //OleDbCommand cmd = new OleDbCommand(strCmd, conn);
+
+//    //try
+//    //{
+//    //    conn.Open();
+//    //    ds.Clear();
+//    //    adapter.SelectCommand = cmd;
+//    //    adapter.Fill(ds);
+//    //    table.ItemsSource = (System.Collections.IEnumerable)ds.Tables[0];
+//    //}
+//    //catch(Exception ex)
+//    //{
+//    //    Console.WriteLine(ex.Message);
+//    //}
+//    //finally
+//    //{
+//    //    conn.Close();
+//    //}
+//}

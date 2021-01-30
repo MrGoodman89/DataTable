@@ -10,11 +10,17 @@
         <DataGrid
             Name="table"
             Background="White"
-            Margin="0,-1,-6,0"
+            Margin="10,19,252,134"
             AutoGenerateColumns="True"
             SelectionChanged="table_SelectionChanged">
-
         </DataGrid>
+        
+        <Button x:Name="getData" 
+                Content="Get data" 
+                HorizontalAlignment="Left" 
+                Margin="25,310,0,0" 
+                VerticalAlignment="Top" 
+                Width="75" Click="getData_Click"/>
 
     </Grid>
 </Window>
