@@ -21,7 +21,7 @@ using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
 using System.Data;
 using System.Data.OleDb;
-using ClosedXML.Excel; 
+using ClosedXML.Excel;
 
 //using DocumentFormat.OpenXml;
 //using DocumentFormat.OpenXml.Packaging;
@@ -40,24 +40,41 @@ namespace DataTable_Intima_
         //string pathToFile = @"C:\Users\lifec\Desktop\Test.xlsx";
         //string[,] list;
         //List<List<string>> spisok;
+        private static ObservableCollection<DatTable> coll = new ObservableCollection<DatTable>();
 
         ////string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\Users\\lifec\\Desktop\\Test.xlsx;Extended Properties=Excel 8.0;HDR=Yes";
         ////string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source = C:\Users\lifec\Desktop\Test.xlsx;Extended Properties = 'Excel 8.0;HDR=Yes;IMEX=1'";
         //static string extending = "Excel 8.0;HDR=Yes;IMEX=1";
         //string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\\Users\\lifec\\Desktop\\Test.xlsx;Extended Properties=" + extending +"";
         //DataGrid dt = new DataGrid();
+        string path = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        
         public MainWindow()
         {
             InitializeComponent();
-            //readFromExcel();
-            //table.ItemsSource = dataCollection;
-            //table.ItemsSource = dataCollection;
-            //OpenConnection(connectionString);
-            //table.ItemsSource = dataCollection;
-
-
+            readFile(path);
+            table.ItemsSource = coll;
         }
 
+        private void readFile(string path)
+        {
+            path = System.IO.Path.Combine(path, "Test.xlsx");
+            var workBook = new XLWorkbook(path);
+            var workSheet = workBook.Worksheet(1);
+            var rows = workSheet.RangeUsed().RowsUsed();
+
+            foreach (var row in rows)
+            {
+                coll.Add(new DatTable(row.Cell(1).Value.ToString(), row.Cell(2).Value.ToString(), row.Cell(3).Value.ToString(), row.Cell(4).Value.ToString()));
+            }
+        }
+
+        private void table_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+    }
+}
         //private void readFromExcel()
         //{
         //    Microsoft.Office.Interop.Excel.Application excle_app = new Microsoft.Office.Interop.Excel.Application();
@@ -121,10 +138,8 @@ namespace DataTable_Intima_
 
         //    }
         //}
-        public void addListInGrid()
-        {
 
-        }
+
         //private DataTable RequestProcessing(string QueryString)
         //{
         //    DataTable datatable = new DataTable();
@@ -213,14 +228,10 @@ namespace DataTable_Intima_
 
         //}
 
-        private void table_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
 
 
-    }
-}
+
+
 
 
 //ПОДКЛЮЧЕНИЕ ЧЕРЕЗ ОЛЕДБ (ВИДОС НА ЮТУБЕ)
