@@ -49,22 +49,32 @@ namespace DataTable_Intima_
 
         private void readFile(string path)
         {
+
             path = System.IO.Path.Combine(path, "Test.xlsx");
-            var workBook = new XLWorkbook(path);
-            var workSheet = workBook.Worksheet(1);
-            var rows = workSheet.RangeUsed().RowsUsed();
-            
+            var wb = new XLWorkbook(path);
+            var ws = wb.Worksheet(1);
+            var rows = ws.RangeUsed().RowsUsed().Skip(1);
+
             foreach (var row in rows)
             {
                 dataCollection.Add(new DatTable(row.Cell(1).Value.ToString(), row.Cell(2).Value.ToString(), 
-                                      row.Cell(3).Value.ToString(), row.Cell(4).Value.ToString()));//fix crutch
+                                     row.Cell(3).Value.ToString(), row.Cell(4).Value.ToString()));//fix crutch
             }
-            var sortData = dataCollection.OrderBy(u => u.value);
+
+            var sortData = dataCollection.OrderBy(u => u.Value);
             table.ItemsSource = sortData;
         }
 
         private void saveDataInFile()
         {
+            var wb = new XLWorkbook();
+            var ws = wb.Worksheet(2);
+
+            using (MemoryStream stream = new MemoryStream())
+            {
+                wb.SaveAs(stream);
+
+            }
 
         }
 

@@ -10,17 +10,17 @@ namespace DataTable_Intima_
 {
     class DatTable 
     {
-        public DatTable(string dateTime, string tagType, string type, string value)
+        public DatTable(string DateTime, string TagType, string Type, string Value)
         {
-            this.dateTime = dateTime;
-            this.tagType = tagType;
-            this.type = type;
-            this.value = value;
+            this.DateTime = DateTime;
+            this.TagType = TagType;
+            this.Type = Type;
+            this.Value = Value;
         }
 
-        public string dateTime { get; set; }
-        public string tagType { get; set; }
-        public string type { get; set; }
-        public string value { get; set; }
+        public string DateTime { get; set; }
+        public string TagType { get; set; }
+        public string Type { get; set; }
+        public string Value { get; set; }
     }
 }
