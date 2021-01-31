@@ -7,20 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        
         <DataGrid
             Name="table"
             Background="White"
-            Margin="10,19,252,134"
+            Margin="0,0,0,0"
             AutoGenerateColumns="True"
             SelectionChanged="table_SelectionChanged">
         </DataGrid>
-        
-        <Button x:Name="getData" 
-                Content="Get data" 
-                HorizontalAlignment="Left" 
-                Margin="25,310,0,0" 
-                VerticalAlignment="Top" 
-                Width="75" />
 
     </Grid>
 </Window>

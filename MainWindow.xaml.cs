@@ -34,26 +34,17 @@ namespace DataTable_Intima_
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
-
-        //private static Collection<DatTable> dataCollection = new Collection<DatTable>();
-        //string pathToFile = @"C:\Users\lifec\Desktop\Test.xlsx";
-        //string[,] list;
-        //List<List<string>> spisok;
-        private static ObservableCollection<DatTable> coll = new ObservableCollection<DatTable>();
-
-        ////string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\Users\\lifec\\Desktop\\Test.xlsx;Extended Properties=Excel 8.0;HDR=Yes";
-        ////string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source = C:\Users\lifec\Desktop\Test.xlsx;Extended Properties = 'Excel 8.0;HDR=Yes;IMEX=1'";
-        //static string extending = "Excel 8.0;HDR=Yes;IMEX=1";
-        //string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\\Users\\lifec\\Desktop\\Test.xlsx;Extended Properties=" + extending +"";
-        //DataGrid dt = new DataGrid();
-        string path = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+    {        
+        //string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\Users\\lifec\\Desktop\\Test.xlsx;Extended Properties=Excel 8.0;HDR=Yes";
         
+        private static ObservableCollection<DatTable> dataCollection = new ObservableCollection<DatTable>();
+        string path = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
         public MainWindow()
         {
             InitializeComponent();
             readFile(path);
-            table.ItemsSource = coll;
+            saveDataInFile();
         }
 
         private void readFile(string path)
@@ -62,12 +53,21 @@ namespace DataTable_Intima_
             var workBook = new XLWorkbook(path);
             var workSheet = workBook.Worksheet(1);
             var rows = workSheet.RangeUsed().RowsUsed();
-
+            
             foreach (var row in rows)
             {
-                coll.Add(new DatTable(row.Cell(1).Value.ToString(), row.Cell(2).Value.ToString(), row.Cell(3).Value.ToString(), row.Cell(4).Value.ToString()));
+                dataCollection.Add(new DatTable(row.Cell(1).Value.ToString(), row.Cell(2).Value.ToString(), 
+                                      row.Cell(3).Value.ToString(), row.Cell(4).Value.ToString()));//fix crutch
             }
+            var sortData = dataCollection.OrderBy(u => u.value);
+            table.ItemsSource = sortData;
         }
+
+        private void saveDataInFile()
+        {
+
+        }
+
 
         private void table_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -103,7 +103,7 @@ namespace DataTable_Intima_
         //            //    {
         //            //        for (int x = 0; x < list.Length; x++)
         //            //        {
-        //            //            dataCollection.Add(new DatTable(list[z, x].ToString(), list[z, x].ToString(), list[z, x].ToString(), list[z, x].ToString()));   
+        //            //            dataCollection.Add(new DatTable(list[z, x].ToString(), list[z, x].ToString(), list[z, x].ToString(), list[z, x].ToString()));
         //            //        }
         //            //    }
         //            //}
