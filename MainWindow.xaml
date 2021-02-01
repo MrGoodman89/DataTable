@@ -11,10 +11,17 @@
         <DataGrid
             Name="table"
             Background="White"
-            Margin="0,0,0,0"
+            Margin="0,0,2,79"
             AutoGenerateColumns="True">
-
         </DataGrid>
+        
+        <Label x:Name="label" 
+               Content="" 
+               HorizontalAlignment="Left" 
+               Margin="15,363,0,0" 
+               VerticalAlignment="Top"
+               Width="760"
+               FontSize="13"/>
 
     </Grid>
 </Window>

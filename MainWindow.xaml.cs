@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows.Threading;
+using System.Threading;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Reflection;
@@ -23,6 +23,7 @@ using System.Data;
 using System.Data.OleDb;
 using ClosedXML.Excel;
 using System.Diagnostics;
+
 //using Excel = Microsoft.Office.Interop.Excel;
 
 namespace DataTable_Intima_
@@ -59,8 +60,7 @@ namespace DataTable_Intima_
             }
             var sortData = dataCollection.OrderBy(u => u.Value);
             table.ItemsSource = sortData;
-            DataTable dt = new DataTable();
-            
+            label.Content = string.Format("Ваши данные были сохранены. Вы можете найти изучить их: {0}", path);
         }
 
         private void saveDataInFile(string filePath)
@@ -75,7 +75,9 @@ namespace DataTable_Intima_
             ws.Cell("A1").Value = table.Items;
             ws.Columns().AdjustToContents();
             wb.SaveAs(filePath);
+            
         }
+
 
     }
 }
