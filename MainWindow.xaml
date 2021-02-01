@@ -7,13 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+
         <DataGrid
             Name="table"
             Background="White"
             Margin="0,0,0,0"
-            AutoGenerateColumns="True"
-            SelectionChanged="table_SelectionChanged">
+            AutoGenerateColumns="True">
+
         </DataGrid>
 
     </Grid>
