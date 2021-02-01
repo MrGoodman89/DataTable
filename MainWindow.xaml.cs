@@ -67,7 +67,10 @@ namespace DataTable_Intima_
         {
             filePath = System.IO.Path.Combine(path, "Test.xlsx");
             var wb = new XLWorkbook(filePath);
-            wb.Worksheet(2).Delete();
+            if (wb.Worksheets.Count > 1)
+            {
+                wb.Worksheet(2).Delete();
+            }
             var ws = wb.Worksheets.Add(2); //var ws = wb.AddWorksheet("2");
             ws.Cell("A1").Value = table.Items;
             ws.Columns().AdjustToContents();
@@ -76,6 +79,31 @@ namespace DataTable_Intima_
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -135,34 +163,6 @@ namespace DataTable_Intima_
 //    // Выходим из программы Excel.
 //    //excle_app.Quit();
 
-//}
-
-
-//почти рабочая тема
-//table.SelectAllCells();
-//table.ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader;
-
-//String resultat = (string)Clipboard.GetData(DataFormats.CommaSeparatedValue);
-
-//String result = (string)Clipboard.GetData(DataFormats.Text);
-
-//table.UnselectAllCells();
-//Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
-//dlg.FileName = "Export1";
-//dlg.DefaultExt = ".text";
-//dlg.Filter = "Excel documents (.xlsx)|*.xlsx";
-
-//Nullable<bool> result1 = dlg.ShowDialog();
-//if (result1 == true)
-//{
-
-//    string filename = dlg.FileName;
-
-//    System.IO.StreamWriter file = new System.IO.StreamWriter(filename, false);
-//    file.WriteLine(result);
-//    file.Close();
-
-//    MessageBox.Show("Экспорт данных успешно завершен");
 //}
 
 
